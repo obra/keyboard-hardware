@@ -5,7 +5,14 @@ keyswitch_y=13.8;
 key_spacing=18.6;
 keyswitch_plate_thickness = 1.7;
 
-regularHand();
+//regularHand();
+leftHand();
+
+module leftHand() {
+	mirror([0,1,0]) {
+		regularHand();
+	}
+}
 
 //turnedHand();
 module turnedHand() {
