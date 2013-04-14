@@ -12,7 +12,7 @@ rightHand();
 
 }
 module rightHand() {
-	translate([0,150,0]) {
+	translate([0,136,0]) {
 		mirror([0,1,0]) {
 			leftHand();
 		}
@@ -21,20 +21,20 @@ module rightHand() {
 
 
 module leftHand() {
-	intersection() { translate([-105,-75,-125]) cube([300,150,300]);
 	union() {
 		difference() {
 			outerShell();
 			interior();
+			//ribbing();
 		}	
-	translate([-90,-74,3]) {
-		rotate([6,-3,90]) {
+	translate([-91,-65,-12]) {
+		rotate([-4,-3,90]) {
 
 		keyPlateHolder();
 		}
 		}
 	}
-	}
+	
 }
 
 
@@ -42,13 +42,13 @@ module leftHand() {
 module outerShell() {
 	hull() {
 		translate([0,0,0]) {
-			rotate([4,4,0]) {
-		    		cube([192,155,1], center=true);
+			rotate([3,-4,0]) {
+		    		cube([192,140,1], center=true);
 			}
 		}
 		//bottom
-		translate([0,0,-22]) {
-			cube([190,155,4], center=true);
+		translate([0,0,-18]) {
+			cube([190,140,1], center=true);
 		}
 
 	
@@ -60,9 +60,9 @@ module outerShell() {
 
 }
 module interior() {
-
-	cube([178,145,46],center=true);
-		translate([-70,80,-13]) {
+	translate([0,0,0])
+	cube([180,130,26],center=true);
+		translate([40,70,-2]) {
 	rotate([90,0,0]) {
 		cylinder(r=8, h=20,center=true);
 	}
@@ -71,8 +71,8 @@ module interior() {
 }
 
 module cableHole() {
-		translate([-100,50,-13]) {
-				cube([20,15,14]);
+		translate([-100,40,-13]) {
+				cube([20,15,8]);
 			
 
 	}
@@ -82,29 +82,13 @@ module cableHole() {
 
 }
 
+module ribbing() {
+	translate([-180,0,-22])
+	rotate([45,90,0]) {
+		for(x = [0: 12 : 500]) {
+		translate([0,x,0])
+			cylinder(r=5, h=300);
+		}
+	}
+}
 
-module handplate() {
-union() {
-				cube([190,160,2], center=true);
-					translate([-95,-75,-0]) {
-						rotate([90,90,90]) {
-							cylinder(r=5, h=190);
-						}
-					}
-					translate([-95,75,-0]) {
-						rotate([90,90,90]) {
-							cylinder(r=5, h=190);
-						}
-					}	
-					translate([90,80,-0]) {
-						rotate([90,90,0]) {
-							cylinder(r=5, h=160);
-						}
-					}
-					translate([-90,80,-0]) {
-						rotate([90,90,0]) {
-							cylinder(r=5, h=160);
-						}
-					}
-}
-}
